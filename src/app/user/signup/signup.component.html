@@ -1,3 +1,4 @@
+<div class="bg">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
   <a class="navbar-brand" href="/"> Chat Application</a>
@@ -29,62 +30,76 @@
 
   <div class="col-sm"></div>
 
-  <div class="col-sm p-5">
-
-    <h2 class="form-signin-heading">Sign Up</h2>
-
+  <div class="col-sm p-5 ">
+    <div class="head">
+      <span>Email: </span>
+</div>
+      <label for="inputEmail" class="sr-only">Email address</label>
+  
+      <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required>
+  
+      <br>
+<div class="row">
+  <div class ="col-6" style="margin-bottom:5%" >
     <br>
-
-    <span>FirstName: </span>
+    <div class="head">
+    <span>FirstName: </span></div>
 
     <label for="inputFirstName" class="sr-only">FirstName</label>
 
     <input type="text" id="inputFirstName" class="form-control" [(ngModel)]="firstName" placeholder="FirstName" required autofocus>
 
-    <br>
-
-    <span>LastName: </span>
+    <br></div>
+<div class="col-6" style="margin-top:5%">
+    <div class="head">
+    <span>LastName: </span></div>
 
     <label for="inputLastName" class="sr-only">LastName</label>
 
     <input type="text" id="inputLastName" class="form-control" [(ngModel)]="lastName" placeholder="LastName" required>
 
-    <br>
+    <br></div>
+</div>
 
+
+<div class="head">
     <span>Mobile: </span>
-
+</div>
     <label for="inputMobile" class="sr-only">Mobile</label>
 
     <input type="number" id="inputMobile" class="form-control" [(ngModel)]="mobile" placeholder="Mobile" required>
 
     <br>
-
-    <span>Email: </span>
-
-    <label for="inputEmail" class="sr-only">Email address</label>
-
-    <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required>
-
-    <br>
-
+    <div class="row">
+      <div class="col-6">
+          <div class="head">
     <span>Password: </span>
-
+</div>
     <label for="inputPassword" class="sr-only">Password</label>
 
     <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" placeholder="Password" required>
 
     <br>
-
-
-    <span>API Key: </span>
-
-    <label for="inputPassword" class="sr-only">AuthKey</label>
-
-    <textarea type="password" id="AuthKey" class="form-control" [(ngModel)]="apiKey" placeholder="API Key" required></textarea>
+  </div>
+  <div class="col-6">
+      <div class="head">
+    <span> Confirm Password: </span>
+</div>
+    <label for="inputPassword" class="sr-only"> Compare Password</label>
+    <input type="password" name="confirmPasswordInput"[(ngModel)]="confirmPassword" placeholder=" Retype Password" required>
+   
+      
+  
 
     <br>
+  </div></div>
+    
 
-    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="signupFunction()">Sign Up</button>
+    
+
+
+
+    <button class="btn btn-lg btn-danger" style="margin-left:35%; margin-top: 5%" type="button" (click)="signupFunction()">Sign Up</button>
 
   </div>
 
@@ -92,4 +107,4 @@
 
 </div>
 
-
+</div>

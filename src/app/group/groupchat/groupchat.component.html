@@ -1,0 +1,146 @@
+<nav class="navbar  navbar-default navbar-expand-lg navbar-light bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link nm" href="#">RAPID GROUP CHAT <span class="sr-only">(current)</span></a>
+      </li>
+     </ul>
+    <form class="form-inline my-2 my-lg-0">
+    
+      <button class="btn btn-danger" (click)="logout()" type="submit">Logout</button>
+    </form>
+  </div>
+</nav>
+
+<div class="row">
+  <div class = col-4>
+<div class="p-3  textCapitalize" style="margin-left:20%">
+  {{userInfo.firstName}} {{userInfo.lastName}}
+  <i class="fa fa-circle online" *ngIf="disconnectedSocket == false"></i>
+  <i class="fa fa-circle offline" *ngIf="disconnectedSocket == true"></i>
+  </div>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Create group
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Group Name </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+             
+              <input type="text" class="form-control" id="inputRoom"  [(ngModel)]="roomName" placeholder="Enter Group Name">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id = "create" (click)="CreateRoom()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+      Edit group
+      </button>
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Enter Group Name </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" id="inputRoom"  [(ngModel)]="roomName" placeholder="Enter Group Name">
+                <input type="text" class="form-control" id="inputRoom"  [(ngModel)]="NewRoomName" placeholder="Enter New Group Name">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id = "edit" (click)="EditRoom()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+        Delete group
+        </button>
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Enter Group Name </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" id="inputRoom"  [(ngModel)]="roomName" placeholder="Enter Group Name">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id = "delete" (click)="DeleteRoom()">Save changes</button>
+              </div>                
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+            Join Chat group
+          </button>
+          <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> Enter Group Name 2 </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" class="form-control" id="inputRoom"  [(ngModel)]="roomName" placeholder="Enter Group Name">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id = "delete" (click)="joinChatRoom()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+  </div>
+  
+
+  
+    <div class="col-md-12">
+        <div class="row" *ngFor="let room of roomList" (click)="roomSelectedToChat(room.roomId,room.name)">
+            <div class="col-md-10" style="padding-top:1em;">
+              {{room.name}}
+              <user-details [userFirstName]="room.roomName" [userLastName]="''" [userStatus]="'Active'" [messageRead]="false"></user-details>
+            </div>
+
+           
+        </div>         
+    </div>
+        
+     
+ 
+
+ 
+</div>
+
+
+<div class="col-8"></div>
+
+   

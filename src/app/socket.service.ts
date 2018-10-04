@@ -12,7 +12,7 @@ import{HttpErrorResponse,HttpParams} from '@angular/common/http';
   providedIn: 'root'
 })
 export class SocketService {
-  private baseUrl = 'https://chatapi.edwisor.com';
+  private baseUrl = 'http://localhost:3000';
   private socket
 
   constructor(public http:HttpClient) { 

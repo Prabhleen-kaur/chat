@@ -38,7 +38,7 @@ export class ChatBoxComponent implements OnInit {
     private toastr: ToastsManager,
     vcr: ViewContainerRef
   ) {
-
+  
     this.receiverId = Cookie.get('receiverId');
 
     this.receiverName = Cookie.get('receiverName');
@@ -179,7 +179,7 @@ export class ChatBoxComponent implements OnInit {
   
   public sendMessageUsingKeyPress: any=(event:any)=>
   {
-if(event.keyCode===13)//enter
+if(event.keyCode === 13)//enter
 {
   this.sendMessage();
 }

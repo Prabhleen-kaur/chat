@@ -1,0 +1,32 @@
+:root{
+    font-size: 16px;
+}
+body,html{
+	height: 100%;
+}
+.head
+{
+    color: #e60000;
+    font-size: 3rem;
+    margin-left: 15%;
+    font-weight: 700
+    
+}
+.bt{
+   background-color:  #f44336;
+   margin-left: 36%;
+  
+   padding: 12px 28px;
+}
+.bg{
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+ 
+    min-width: 100%;
+    min-height: 100%;
+    
+  
+    background-image: url("../../../assets/login.jpg")
+}

@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   public mobile: any;
   public email: any;
   public password: any;
-  public apiKey: any;
+  public confirmPassword: any;
   constructor(public appService:AppService,
   public router:Router,
 public toastr:ToastsManager,
@@ -46,8 +46,11 @@ else if(!this.email){
 else if(!this.password){
   this.toastr.warning('Enter password');
 }
-else if(!this.apiKey){
+else if(!this.confirmPassword){
   this.toastr.warning('Enter apiKey');
+}
+else if(this.confirmPassword!=this.password){
+  this.toastr.warning('Password dont match');
 }
 else{
   let data ={
@@ -56,7 +59,7 @@ else{
     mobile:this.mobile,
     email:this.email,
     password:this.password,
-    apiKey:this.apiKey
+  confirmPassword:this.confirmPassword
   }
   console.log(data);
   this.appService.signupFunction(data).subscribe((apiResponse)=>
